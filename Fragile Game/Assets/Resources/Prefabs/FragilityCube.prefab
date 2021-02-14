@@ -169,5 +169,19 @@ MonoBehaviour:
   lightMass: 15
   fragileColor: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
   sturdyColor: {r: 0, g: 0.84313726, b: 0, a: 1}
-  shatterThreshold: 2
+  shatterMass: 0
+  shatterVelocity: 0
+  shatterSounds:
+  - {fileID: 8300000, guid: baf34b19d3ad8534a93642a56da35741, type: 3}
+  - {fileID: 8300000, guid: bbd16084c58666c48b16e5bdd1f140a5, type: 3}
+  - {fileID: 8300000, guid: 9d4d6d4ed003eac47aa1dd9d9f6de07d, type: 3}
+  g2mSounds:
+  - {fileID: 8300000, guid: c83eb7d8f88b5cb48926cf3d48ae3de1, type: 3}
+  - {fileID: 8300000, guid: 92637217c6a866e4695d7cbb41d7bf77, type: 3}
+  m2gSounds:
+  - {fileID: 8300000, guid: 0a515d7b8aa9de14fbfb20989979c815, type: 3}
+  - {fileID: 8300000, guid: 5d82287f545ff164dbf675728c313b07, type: 3}
+  - {fileID: 8300000, guid: 75028e3c507d3be49b0d8c76f6bb94f9, type: 3}
+  toggleKey: 0
+  toggleKeyCode: 0
   isFragile: 1

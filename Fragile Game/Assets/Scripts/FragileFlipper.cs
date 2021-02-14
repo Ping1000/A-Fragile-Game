@@ -31,6 +31,12 @@ public class FragileFlipper : MonoBehaviour
     private float shatterMass;
     [SerializeField]
     private float shatterVelocity;
+    [SerializeField]
+    private List<AudioClip> shatterSounds;
+    [SerializeField]
+    private List<AudioClip> g2mSounds;
+    [SerializeField]
+    private List<AudioClip> m2gSounds;
 
     public ToggleKey toggleKey;
     [HideInInspector]
@@ -65,16 +71,21 @@ public class FragileFlipper : MonoBehaviour
     public void ToggleFragility()
     {
         isFragile = !isFragile;
-        SetProperties(isFragile);
+        SetProperties(isFragile, true);
     }
 
-    void SetProperties(bool isFragile)
+    void SetProperties(bool isFragile, bool playSound=false)
     {
         if (isFragile)
         {
             _renderer.color = fragileColor;
             _body.mass = lightMass;
             _body.sharedMaterial = _lightMat;
+            if (playSound)
+            {
+                AudioClip sound = m2gSounds[Random.Range(0, m2gSounds.Count)];
+                AudioSource.PlayClipAtPoint(sound, gameObject.transform.position);
+            }
             // _light.color = fragileColor;
         } else
         {
@@ -82,12 +93,24 @@ public class FragileFlipper : MonoBehaviour
             _body.mass = heavyMass;
             _body.sharedMaterial = _heavyMat;
             // _light.color = sturdyColor;
+            if (playSound)
+            {
+                AudioClip sound = g2mSounds[Random.Range(0, g2mSounds.Count)];
+                AudioSource.PlayClipAtPoint(sound, gameObject.transform.position);
+            }
         }
     }
 
     void Shatter()
     {
+        AudioClip shatterSound = shatterSounds[Random.Range(0, shatterSounds.Count)];
+        AudioSource.PlayClipAtPoint(shatterSound, gameObject.transform.position);
         _exp.explode();
+    }
+
+    private void OnMouseDown()
+    {
+        ToggleFragility();
     }
 
     void OnCollisionStay2D(Collision2D collision)

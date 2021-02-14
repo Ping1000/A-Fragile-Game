@@ -9,11 +9,13 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private float jumpForce = 500f;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundMask;
+    [SerializeField] private List<AudioClip> jumpSounds;
 
     Vector3 zeroVector = Vector3.zero;
 
     private Rigidbody2D rb;
     private Collider2D feetCollider;
+    private AudioSource audio;
 
     const float groundedRadius = .25f;
     private bool grounded;
@@ -22,6 +24,7 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -39,6 +42,9 @@ public class CharacterController : MonoBehaviour
 
         if (jump && grounded)
         {
+            AudioClip jumpSound = jumpSounds[Random.Range(0, jumpSounds.Count)];
+            audio.clip = jumpSound;
+            audio.Play();
             rb.AddForce(new Vector2(0f, jumpForce));
             grounded = false;
         }
