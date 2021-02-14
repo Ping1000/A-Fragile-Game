@@ -281,6 +281,11 @@ PrefabInstance:
       propertyPath: shatterVelocity
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1684352992324645931, guid: 540c1f278897bba40bdbb61b358bc7a5,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1684352992324645934, guid: 540c1f278897bba40bdbb61b358bc7a5,
         type: 3}
       propertyPath: m_Name
