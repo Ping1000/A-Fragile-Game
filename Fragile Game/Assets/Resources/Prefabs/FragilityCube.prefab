@@ -28,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684352992324645934}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.40536594, y: 2.865764, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,7 +93,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684352992324645934}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -172,8 +172,6 @@ MonoBehaviour:
   fragileColor: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
   sturdyColor: {r: 0, g: 0.84313726, b: 0, a: 1}
   shatterThreshold: 150
-  shatterMass: 0
-  shatterVelocity: 0
   shatterSounds:
   - {fileID: 8300000, guid: baf34b19d3ad8534a93642a56da35741, type: 3}
   - {fileID: 8300000, guid: bbd16084c58666c48b16e5bdd1f140a5, type: 3}
@@ -187,4 +185,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 75028e3c507d3be49b0d8c76f6bb94f9, type: 3}
   toggleKey: 0
   toggleKeyCode: 0
-  isFragile: 1
+  isFragile: 0

@@ -17,9 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private List<AudioClip> shatterSounds;
     [SerializeField]
-    private List<AudioClip> g2mSounds;
-    [SerializeField]
-    private List<AudioClip> m2gSounds;
+    private List<AudioClip> jumpSounds;
 
     Vector3 zeroVector = Vector3.zero;
 
@@ -27,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private Collider2D feetCollider;
+    private AudioSource src;
 
     const float groundedRadius = .25f;
     private bool grounded;
@@ -36,6 +35,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
         _exp = GetComponent<Explodable>();
+        src = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, jumpForce));
             grounded = false;
+            src.clip = jumpSounds[Random.Range(0, jumpSounds.Count)];
+            src.Play();
         }
 
         // if sprite is moving in opposite direction that it is facing, call Flip()
