@@ -99,7 +99,10 @@ public class PlayerController : MonoBehaviour
         if (isFragile)
         {
             // TODO maybe use rigidbody insted of otherrigidbody?
-            float kineticEnergy = .5f * collision.otherRigidbody.mass * collision.relativeVelocity.magnitude * collision.relativeVelocity.magnitude;
+            //float kineticEnergy = .5f * collision.otherRigidbody.mass * collision.relativeVelocity.magnitude * collision.relativeVelocity.magnitude;
+            
+            float kineticEnergy = collision.GetContact(0).normalImpulse;
+            Debug.Log(kineticEnergy);
             if (kineticEnergy >= shatterThreshold)
             {
                 PlayerShatter();
