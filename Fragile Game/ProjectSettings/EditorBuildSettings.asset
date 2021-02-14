@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DakotaDemo.unity
+    guid: e8acb5dc8618c24438f01e177989c130
   m_configObjects: {}

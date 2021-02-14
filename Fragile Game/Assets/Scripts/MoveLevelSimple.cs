@@ -6,10 +6,11 @@ public class MoveLevelSimple : MonoBehaviour
 {
     [SerializeField]
     private Transform toLocation;
+    private bool canMove;
     // Start is called before the first frame update
     void Start()
     {
-
+        canMove = true;
     }
 
     // Update is called once per frame
@@ -20,9 +21,10 @@ public class MoveLevelSimple : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (canMove && collision.gameObject.tag == "Player")
         {
             LeanTween.move(Camera.main.gameObject, toLocation, 3).setEaseInOutCubic();
+            canMove = false;
         }
     }
 }
