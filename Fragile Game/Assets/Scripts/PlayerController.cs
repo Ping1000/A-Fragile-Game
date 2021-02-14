@@ -5,12 +5,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    private Explodable _exp;
+
     [SerializeField] private float movementSmoothing = .1f;
     [SerializeField] private float jumpForce = 500f;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform[] groundChecks;
     [SerializeField] private LayerMask groundMask;
 
+    [SerializeField]
+    private float shatterThreshold;
+    [SerializeField]
+    private List<AudioClip> shatterSounds;
+    [SerializeField]
+    private List<AudioClip> g2mSounds;
+    [SerializeField]
+    private List<AudioClip> m2gSounds;
+
     Vector3 zeroVector = Vector3.zero;
+
+    public bool isFragile = true;
 
     private Rigidbody2D rb;
     private Collider2D feetCollider;
@@ -22,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         feetCollider = GetComponent<CircleCollider2D>();
+        _exp = GetComponent<Explodable>();
     }
 
     // Update is called once per frame
@@ -53,18 +67,43 @@ public class PlayerController : MonoBehaviour
 
     void IsGrounded()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, groundMask);
         grounded = false;
-        for (int i = 0; i < colliders.Length; i++)
+        foreach (Transform check in groundChecks)
         {
-            Debug.Log(colliders[i]);
-            if (colliders[i] != gameObject)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(check.position, groundedRadius, groundMask);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                grounded = true;
+                Debug.Log(colliders[i]);
+                if (colliders[i] != gameObject)
+                {
+                    grounded = true;
+                }
             }
         }
+        
 
         Debug.Log(grounded);
 
+    }
+
+    void PlayerShatter()
+    {
+        AudioClip shatterSound = shatterSounds[Random.Range(0, shatterSounds.Count)];
+        AudioSource.PlayClipAtPoint(shatterSound, gameObject.transform.position);
+        _exp.explode();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If object is hit with enough velocity, break!
+        if (isFragile)
+        {
+            // TODO maybe use rigidbody insted of otherrigidbody?
+            float kineticEnergy = .5f * collision.otherRigidbody.mass * collision.relativeVelocity.magnitude * collision.relativeVelocity.magnitude;
+            if (kineticEnergy >= shatterThreshold)
+            {
+                PlayerShatter();
+            }
+        }
     }
 }

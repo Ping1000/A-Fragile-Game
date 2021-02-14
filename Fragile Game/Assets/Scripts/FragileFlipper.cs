@@ -28,14 +28,11 @@ public class FragileFlipper : MonoBehaviour
     [SerializeField]
     private Sprite sturdySprite;
     [SerializeField]
-    private Color fragileColor;
+    private Color fragileColor; // TODO remove colors maybe?
     [SerializeField]
     private Color sturdyColor;
     [SerializeField]
     private float shatterThreshold;
-    private float shatterMass;
-    [SerializeField]
-    private float shatterVelocity;
     [SerializeField]
     private List<AudioClip> shatterSounds;
     [SerializeField]
