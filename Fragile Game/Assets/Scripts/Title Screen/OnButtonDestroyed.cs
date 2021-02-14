@@ -23,6 +23,9 @@ public class OnButtonDestroyed : MonoBehaviour
 
     private void OnDestroy()
     {
-        lw.ChangeScene(sceneName, delay);
+        if (lw != null)
+        {
+            lw.ChangeScene(sceneName, delay);
+        }
     }
 }

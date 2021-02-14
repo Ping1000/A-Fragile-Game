@@ -8,7 +8,7 @@ public class CameraPositionCycler : MonoBehaviour
     [SerializeField]
     private List<Transform> toLocations;
     [SerializeField]
-    private Text txt;
+    //private Text txt;
 
     private int locationIdx;
     private bool canMove;
@@ -36,7 +36,7 @@ public class CameraPositionCycler : MonoBehaviour
         {
             locationIdx = (locationIdx + 1) % toLocations.Count;
             LeanTween.move(Camera.main.gameObject, toLocations[locationIdx], 3).setEaseInOutCubic().setOnComplete(() => { canMove = true; });
-            LeanTween.value(gameObject, txt.color, (locationIdx == 1) ? noAlpha : whiteColor, 2).setOnUpdateColor((Color c) => { txt.color = c; });
+            //LeanTween.value(gameObject, txt.color, (locationIdx == 1) ? noAlpha : whiteColor, 2).setOnUpdateColor((Color c) => { txt.color = c; });
             canMove = false;
         }
     }
