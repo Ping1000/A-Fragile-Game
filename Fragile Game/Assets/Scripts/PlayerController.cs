@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 // Controller structure and some segments from https://github.com/Brackeys/2D-Character-Controller/blob/master/CharacterController2D.cs
 public class PlayerController : MonoBehaviour
 {
 
     private Explodable _exp;
+
+    public LevelController levelController;
 
     [SerializeField] private float movementSmoothing = .1f;
     [SerializeField] private float jumpForce = 500f;
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     private Collider2D feetCollider;
     private AudioSource src;
 
-    const float groundedRadius = .25f;
+    const float groundedRadius = .19f;
     private bool grounded;
 
     private void Awake()
@@ -38,6 +41,10 @@ public class PlayerController : MonoBehaviour
         src = GetComponent<AudioSource>();
     }
 
+    void Update()
+    {
+   
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -96,11 +103,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void PlayerShatter()
+    public void PlayerShatter()
     {
         AudioClip shatterSound = shatterSounds[Random.Range(0, shatterSounds.Count)];
         AudioSource.PlayClipAtPoint(shatterSound, gameObject.transform.position);
         _exp.explode();
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision)
