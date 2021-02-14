@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void Move(float move, bool jump)
+    public void Move(float move, bool jump, bool fall)
     {
         Vector3 targetVelocity = new Vector2(move, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref zeroVector, movementSmoothing);
@@ -55,6 +55,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, jumpForce));
             grounded = false;
+        }
+        if (fall)
+        {
+            rb.velocity.Set(rb.velocity.x, 0f);
         }
 
         // if sprite is moving in opposite direction that it is facing, call Flip()

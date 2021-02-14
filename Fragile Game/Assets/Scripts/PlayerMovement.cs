@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     float move = 0f;
 
     bool jump = false;
+    bool fall = false;
 
     // Use this for initialization
     void Start()
@@ -29,11 +30,16 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
         }
+        if (Input.GetButtonUp("Jump"))
+        {
+            fall = true;
+        }
     }
 
     void FixedUpdate()
     {
-        playerController.Move(move, jump);
+        playerController.Move(move, jump, fall);
         jump = false;
+        fall = true;
     }
 }
