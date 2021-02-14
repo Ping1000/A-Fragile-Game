@@ -167,8 +167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heavyMass: 100
   lightMass: 15
+<<<<<<< HEAD
   fragileSprite: {fileID: 21300000, guid: 292a71229065b194a809a963f09d6e31, type: 3}
   sturdySprite: {fileID: 21300000, guid: 292a71229065b194a809a963f09d6e31, type: 3}
+=======
+>>>>>>> 471b9e4b3ef44d141401514577cf69582f158d7d
   fragileColor: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
   sturdyColor: {r: 0, g: 0.84313726, b: 0, a: 1}
   shatterThreshold: 150

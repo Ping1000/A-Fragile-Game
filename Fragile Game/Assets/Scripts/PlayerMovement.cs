@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController characterController;
+    public PlayerController playerController;
 
     public float moveSpeed = 10f;
     float move = 0f;
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        characterController.Move(move, jump);
+        playerController.Move(move, jump);
         jump = false;
     }
 }
