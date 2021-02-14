@@ -174,10 +174,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heavyMass: 100
   lightMass: 5
-  fragileSprite: {fileID: 21300000, guid: f474aa711f18dcb47ab9f7aee5ae387e, type: 3}
-  sturdySprite: {fileID: 21300000, guid: f474aa711f18dcb47ab9f7aee5ae387e, type: 3}
-  fragileColor: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
-  sturdyColor: {r: 0, g: 0.84313726, b: 0, a: 1}
+  fragileSprite: {fileID: 21300000, guid: 6f061048275f58c49b2b5047a2bc4977, type: 3}
+  sturdySprite: {fileID: 21300000, guid: f7d1e7a120ce4fd4a99d2f76d7098aaa, type: 3}
+  fragileColor: {r: 1, g: 1, b: 1, a: 1}
+  sturdyColor: {r: 1, g: 1, b: 1, a: 1}
   shatterThreshold: 15
   shatterSounds:
   - {fileID: 8300000, guid: baf34b19d3ad8534a93642a56da35741, type: 3}
