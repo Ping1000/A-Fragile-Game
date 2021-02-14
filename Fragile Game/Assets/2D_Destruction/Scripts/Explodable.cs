@@ -12,9 +12,9 @@ public class Explodable : MonoBehaviour
     public System.Action<List<GameObject>> OnFragmentsGenerated;
 
     public bool allowRuntimeFragmentation = false;
-    public int extraPoints = 0;
+    public int extraPoints;
     public int subshatterSteps = 0;
-    public float fragmentLifetime = 0;
+    public float fragmentLifetime;
 
     public string fragmentLayer = "Default";
     public string sortingLayerName = "Default";

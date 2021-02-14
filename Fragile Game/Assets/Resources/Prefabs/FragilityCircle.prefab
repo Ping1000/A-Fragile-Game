@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowRuntimeFragmentation: 1
-  extraPoints: 1
+  extraPoints: 2
   subshatterSteps: 0
   fragmentLifetime: 3
   fragmentLayer: Default
@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heavyMass: 100
-  lightMass: 15
+  lightMass: 5
   fragileSprite: {fileID: 21300000, guid: f474aa711f18dcb47ab9f7aee5ae387e, type: 3}
   sturdySprite: {fileID: 21300000, guid: f474aa711f18dcb47ab9f7aee5ae387e, type: 3}
   fragileColor: {r: 0.84313726, g: 0.84313726, b: 0, a: 1}
   sturdyColor: {r: 0, g: 0.84313726, b: 0, a: 1}
-  shatterThreshold: 150
+  shatterThreshold: 15
   shatterSounds:
   - {fileID: 8300000, guid: baf34b19d3ad8534a93642a56da35741, type: 3}
   - {fileID: 8300000, guid: bbd16084c58666c48b16e5bdd1f140a5, type: 3}
@@ -192,4 +192,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 75028e3c507d3be49b0d8c76f6bb94f9, type: 3}
   toggleKey: 0
   toggleKeyCode: 0
-  isFragile: 0
+  isFragile: 1

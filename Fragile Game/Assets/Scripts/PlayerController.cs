@@ -58,9 +58,13 @@ public class PlayerController : MonoBehaviour
             src.clip = jumpSounds[Random.Range(0, jumpSounds.Count)];
             src.Play();
         }
-        if (fall)
+        if (fall && rb.velocity.y > 0f)
         {
-            rb.velocity.Set(rb.velocity.x, 0f);
+            //Debug.Log("Early Fall!");
+            //rb.AddForce(new Vector2(0f, -.25f * jumpForce));
+            rb.velocity = new Vector2(rb.velocity.x, 0f);//rb.velocity.y/10);
+
+            //Debug.Log(rb.velocity);
         }
 
         // if sprite is moving in opposite direction that it is facing, call Flip()
@@ -79,7 +83,7 @@ public class PlayerController : MonoBehaviour
             Collider2D[] colliders = Physics2D.OverlapCircleAll(check.position, groundedRadius, groundMask);
             for (int i = 0; i < colliders.Length; i++)
             {
-                Debug.Log(colliders[i]);
+                //Debug.Log(colliders[i]);
                 if (colliders[i] != gameObject)
                 {
                     grounded = true;
@@ -88,7 +92,7 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        Debug.Log(grounded);
+        //Debug.Log(grounded);
 
     }
 
@@ -104,11 +108,17 @@ public class PlayerController : MonoBehaviour
         // If object is hit with enough velocity, break!
         if (isFragile)
         {
-            // TODO maybe use rigidbody insted of otherrigidbody?
             //float kineticEnergy = .5f * collision.otherRigidbody.mass * collision.relativeVelocity.magnitude * collision.relativeVelocity.magnitude;
-            
-            float kineticEnergy = collision.GetContact(0).normalImpulse;
-            Debug.Log(kineticEnergy);
+
+            //float kineticEnergy = collision.GetContact(0).normalImpulse;
+            float kineticEnergy = 0f;
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                float partial = collision.GetContact(i).normalImpulse;
+                kineticEnergy += partial;
+                //Debug.Log("PLAYER PARTIAL KE: " + partial);
+            }
+            Debug.Log("PLAYER KE: " + kineticEnergy);
             if (kineticEnergy >= shatterThreshold)
             {
                 PlayerShatter();

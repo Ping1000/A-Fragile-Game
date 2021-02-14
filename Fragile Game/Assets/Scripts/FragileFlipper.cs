@@ -159,7 +159,14 @@ public class FragileFlipper : MonoBehaviour
         {
             // TODO maybe use rigidbody insted of otherrigidbody?
             //float kineticEnergy = .5f * collision.otherRigidbody.mass * collision.relativeVelocity.magnitude * collision.relativeVelocity.magnitude;
-            float kineticEnergy = collision.GetContact(0).normalImpulse;
+            float kineticEnergy = 0f;
+            for (int i = 0; i < collision.contactCount; i++)
+            {
+                float partial = collision.GetContact(i).normalImpulse;
+                kineticEnergy += partial;
+                //Debug.Log("PLAYER PARTIAL KE: " + partial);
+            }
+            Debug.Log("object ke is " + kineticEnergy);
             if (kineticEnergy >= shatterThreshold)
             {
                 Shatter();

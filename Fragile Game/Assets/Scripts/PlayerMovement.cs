@@ -38,8 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        playerController.Move(move, jump, fall);
+        playerController.Move(move, jump, fall );
         jump = false;
-        fall = true;
+        fall = false;
     }
 }
