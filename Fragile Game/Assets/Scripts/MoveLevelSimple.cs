@@ -6,6 +6,8 @@ public class MoveLevelSimple : MonoBehaviour
 {
     [SerializeField]
     private Transform toLocation;
+    [SerializeField]
+    private float toSize;
     private bool canMove;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +26,13 @@ public class MoveLevelSimple : MonoBehaviour
         if (canMove && collision.gameObject.tag == "Player")
         {
             LeanTween.move(Camera.main.gameObject, toLocation, 3).setEaseInOutCubic();
+            LeanTween.value(Camera.main.gameObject, Camera.main.orthographicSize, toSize, 3).setEaseInOutCubic().setOnUpdate((float f) => { Camera.main.orthographicSize = f; });
             canMove = false;
         }
+    }
+
+    void SetCameraSize(float newSize)
+    {
+        Camera.main.orthographicSize = newSize;
     }
 }
