@@ -1,5 +1,5 @@
 ﻿// Original from https://github.com/mjholtzem/Unity-2D-Destruction,
-// featuring changes by @carohauta on GitHub (pull request)
+// featuring changes by @carohauta on GitHub (pull request) and by me
 
 using UnityEngine;
 using System.Collections;
@@ -118,6 +118,10 @@ public class Explodable : MonoBehaviour
                 p.layer = LayerMask.NameToLayer(fragmentLayer);
                 p.GetComponent<Renderer>().sortingLayerName = sortingLayerName;
                 p.GetComponent<Renderer>().sortingOrder = orderInLayer;
+            }
+            if (fragmentLifetime > 0)
+            {
+                p.AddComponent<DestroyObjectDelay>().delay = fragmentLifetime;
             }
         }
 

@@ -17,23 +17,12 @@ public class FlipperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            foreach (WeightFlipper w in weightObjects)
-            {
-                if (w)
-                {
-                    w.ToggleWeight();
-                }
-            }
-        } else if (Input.GetKeyDown(KeyCode.Mouse1))
+        if (Input.anyKeyDown)
         {
             foreach (FragileFlipper f in fragileObjects)
             {
-                if (f)
-                {
+                if (Input.GetKeyDown(f.toggleKeyCode))
                     f.ToggleFragility();
-                }
             }
         }
     }

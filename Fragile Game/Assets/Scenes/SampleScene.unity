@@ -309,15 +309,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543695607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90210344dc727eb49adc870a2237c5ec, type: 3}
+  m_Script: {fileID: 11500000, guid: b8928e0225d1a8944a0ed3b5057a0a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSmoothing: 0.1
-  jumpForce: 300
-  groundCheck: {fileID: 775504973}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 55
+  characterController: {fileID: 1543695614}
+  moveSpeed: 10
 --- !u!50 &1543695609
 Rigidbody2D:
   serializedVersion: 4
@@ -455,11 +451,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543695607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8928e0225d1a8944a0ed3b5057a0a87, type: 3}
+  m_Script: {fileID: 11500000, guid: 90210344dc727eb49adc870a2237c5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 1543695608}
-  moveSpeed: 10
+  movementSmoothing: 0.1
+  jumpForce: 500
+  groundCheck: {fileID: 775504973}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 55
 --- !u!1 &1576406377
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.5, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 3.5, y: 0.5, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
