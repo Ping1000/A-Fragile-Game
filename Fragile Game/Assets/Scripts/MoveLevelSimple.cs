@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MoveLevelSimple : MonoBehaviour
 {
+    public MusicManager winMusic;
+    public MusicManager backgroundMusic;
+    public GameObject winCanvas;
+
+    [SerializeField]
+    private bool isWinTrigger;
     [SerializeField]
     private Transform toLocation;
     [SerializeField]
@@ -28,6 +34,13 @@ public class MoveLevelSimple : MonoBehaviour
             LeanTween.move(Camera.main.gameObject, toLocation, 3).setEaseInOutCubic();
             LeanTween.value(Camera.main.gameObject, Camera.main.orthographicSize, toSize, 3).setEaseInOutCubic().setOnUpdate((float f) => { Camera.main.orthographicSize = f; });
             canMove = false;
+        }
+        if (isWinTrigger)
+        {
+            backgroundMusic.FadeMusicOut();
+            winMusic.FadeMusicIn();
+            winCanvas.SetActive(true);
+            FindObjectOfType<PlayerController>().isFragile = false;
         }
     }
 

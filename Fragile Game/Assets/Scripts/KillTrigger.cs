@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class KillTrigger : MonoBehaviour
 {
+
+    public PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,8 @@ public class KillTrigger : MonoBehaviour
 
     IEnumerator RestartLevel()
     {
+        playerController.PlayerShatter();
+
         yield return new WaitForSeconds(2);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

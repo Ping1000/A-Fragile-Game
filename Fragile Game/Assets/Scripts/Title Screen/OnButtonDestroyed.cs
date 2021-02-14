@@ -6,6 +6,8 @@ public class OnButtonDestroyed : MonoBehaviour
 {
     [SerializeField]
     private LoadWorld lw;
+    [SerializeField]
+    private MusicManager bgm;
 
     public string sceneName;
     public int delay;
@@ -23,9 +25,11 @@ public class OnButtonDestroyed : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (lw != null)
+        if (lw)
         {
             lw.ChangeScene(sceneName, delay);
         }
+        if (bgm)
+            bgm.FadeMusicOut();
     }
 }
